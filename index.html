@@ -6,9 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Quiz</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
+    <!-- View High Scores and Timer -->
+    <header class="d-flex justify-content-between">
+        <h4 class="m-3">View High Scores</h4>
+        <h4 class="m-3">Time: 60</h4>
+    </header>
+    <main class="row justify-content-center">
+        <div class="col-12 col-lg-3 d-flex flex-column">
+            <h1 class="m-auto p-3 text-center">Coding Quiz Challenge</h1>
+            <p class="m-auto text-center p-3">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
+            <button class="btn btn-primary m-3">Start Quiz</button>
+        </div>
+    </main>
+    
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
