@@ -34,97 +34,102 @@ var quizQuestions = [
 
 // function to build quiz
 function startQuiz() {
-    quizContainer.textContent = "";
-    var question = document.createElement("h1");
-    var answerList = document.createElement("ol");
-    var answerA = document.createElement("button");
-    var answerB = document.createElement("button");
-    var answerC = document.createElement("button");
-    var answerD = document.createElement("button");
+    questionNumber = 0;
+    while (questionNumber < quizQuestions.length) {
+        quizContainer.textContent = "";
+        var question = document.createElement("h1");
+        var answerList = document.createElement("ol");
+        var answerA = document.createElement("button");
+        var answerB = document.createElement("button");
+        var answerC = document.createElement("button");
+        var answerD = document.createElement("button");
 
-    question.textContent = quizQuestions[0].question;
-    answerA.textContent = quizQuestions[0].answers["a"];
-    answerB.textContent = quizQuestions[0].answers["b"];
-    answerC.textContent = quizQuestions[0].answers["c"];
-    answerD.textContent = quizQuestions[0].answers["d"];
+        question.textContent = quizQuestions[questionNumber].question;
+        answerA.textContent = quizQuestions[questionNumber].answers["a"];
+        answerB.textContent = quizQuestions[questionNumber].answers["b"];
+        answerC.textContent = quizQuestions[questionNumber].answers["c"];
+        answerD.textContent = quizQuestions[questionNumber].answers["d"];
 
-    $(answerA).addClass("btn btn-primary m-3");
-    $(answerB).addClass("btn btn-primary m-3");
-    $(answerC).addClass("btn btn-primary m-3");
-    $(answerD).addClass("btn btn-primary m-3");
+        $(answerA).addClass("btn btn-primary m-3");
+        $(answerB).addClass("btn btn-primary m-3");
+        $(answerC).addClass("btn btn-primary m-3");
+        $(answerD).addClass("btn btn-primary m-3");
 
-    $(answerA).attr("id", "a");
-    $(answerB).attr("id", "b");
-    $(answerC).attr("id", "c");
-    $(answerD).attr("id", "d");
+        $(answerA).attr("id", "a");
+        $(answerB).attr("id", "b");
+        $(answerC).attr("id", "c");
+        $(answerD).attr("id", "d");
 
-    answerList.appendChild(answerA);
-    answerList.appendChild(answerB);
-    answerList.appendChild(answerC);
-    answerList.appendChild(answerD);
+        answerList.appendChild(answerA);
+        answerList.appendChild(answerB);
+        answerList.appendChild(answerC);
+        answerList.appendChild(answerD);
+        quizContainer.appendChild(question);
+        quizContainer.appendChild(answerList);
 
-    quizContainer.appendChild(question);
-    quizContainer.appendChild(answerList);
+        // JQuery events to check for right answer
+        $("#a").on("click", function() {
+            console.log(this.id);
+            if(this.id === quizQuestions[questionNumber].correctAnswer) {
+                console.log("You are right!");
+                resultContainer.appendChild(answerCorrect);
+            }
 
-    // JQuery events to check for right answer
-    $("#a").on("click", function() {
-        console.log(this.id);
-        if(this.id === quizQuestions[0].correctAnswer) {
-            console.log("You are right!");
-            resultContainer.appendChild(answerCorrect);
-        }
+            else {
+                console.log("You are wrong!");
+                resultContainer.appendChild(answerIncorrect);
+                timeLeft = timeLeft - 10;
+            }
+        });
 
-        else {
-            console.log("You are wrong!");
-            resultContainer.appendChild(answerIncorrect);
-            timeLeft = timeLeft - 10;
-        }
-    });
-    $("#b").on("click", function() {
-        console.log(this.id);
-        if(this.id === quizQuestions[0].correctAnswer) {
-            console.log("You are right!");
-            resultContainer.appendChild(answerCorrect);
-        }
+        $("#b").on("click", function() {
+            console.log(this.id);
+            if(this.id === quizQuestions[questionNumber].correctAnswer) {
+                console.log("You are right!");
+                resultContainer.appendChild(answerCorrect);
+            }
 
-        else {
-            console.log("You are wrong!");
-            resultContainer.appendChild(answerIncorrect);
-            timeLeft = timeLeft - 10;
-        }
-    });
-    $("#c").on("click", function() {
-        console.log(this.id);
-        if(this.id === quizQuestions[0].correctAnswer) {
-            console.log("You are right!");
-            resultContainer.appendChild(answerCorrect);
-        }
+            else {
+                console.log("You are wrong!");
+                resultContainer.appendChild(answerIncorrect);
+                timeLeft = timeLeft - 10;
+            }
+        });
 
-        else {
-            console.log("You are wrong!");
-            resultContainer.appendChild(answerIncorrect);
-            timeLeft = timeLeft - 10;
-        }
-    });
-    $("#d").on("click", function() {
-        console.log(this.id);
-        if(this.id === quizQuestions[0].correctAnswer) {
-            console.log("You are right!");
-            resultContainer.appendChild(answerCorrect);
-        }
+        $("#c").on("click", function() {
+            console.log(this.id);
+            if(this.id === quizQuestions[questionNumber].correctAnswer) {
+                console.log("You are right!");
+                resultContainer.appendChild(answerCorrect);
+            }
 
-        else {
-            console.log("You are wrong!");
-            resultContainer.appendChild(answerIncorrect);
-            timeLeft = timeLeft - 10;
-        }
-    });
+            else {
+                console.log("You are wrong!");
+                resultContainer.appendChild(answerIncorrect);
+                timeLeft = timeLeft - 10;
+            }
+        });
+
+        $("#d").on("click", function() {
+            console.log(this.id);
+            if(this.id === quizQuestions[questionNumber].correctAnswer) {
+                console.log("You are right!");
+                resultContainer.appendChild(answerCorrect);
+            }
+
+            else {
+                console.log("You are wrong!");
+                resultContainer.appendChild(answerIncorrect);
+                timeLeft = timeLeft - 10;
+            }
+        });
+    }
+
+    
 }
 
 // Timer function for the quiz
 function countdown() {
-    // var timeLeft = 60;
-
     var timeInterval = setInterval(function() {
         if (timeLeft > 0) {
             timerEl.textContent = "Time: " + timeLeft;
@@ -138,4 +143,4 @@ function countdown() {
 }
 
 $("#start").on("click", countdown);
-$("#start").on("click", startQuiz);
+$("#start").on("click", startQuiz(0));
