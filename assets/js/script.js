@@ -50,6 +50,66 @@ var quizQuestions = [
         d: "console logs"
     },
     correctAnswer: "d"
+},
+{
+    question: "The condition in an if/else statement is enclosed with ______.",
+    answers: {
+        a: "quotes",
+        b: "curly brackets",
+        c: "parentheses",
+        d: "sqaure brackets"
+    },
+    correctAnswer: "c"
+},
+{
+    question: "Inside which HTML element do we put the JavaScript file?",
+    answers: {
+        a: "<script>",
+        b: "<js>",
+        c: "./assets/script.js",
+        d: "<scripting>"
+    },
+    correctAnswer: "a"
+},
+{
+    question: "How does a FOR loop start?",
+    answers: {
+        a: "for(i<=5; i++)",
+        b: "for(i=0; i<=5; i++)",
+        c: "for i = 1 to 5",
+        d: "for (i=0; i<=5)"
+    },
+    correctAnswer: "b"
+},
+{
+    question: "JavaScript is the same as Java.",
+    answers: {
+        a: "True",
+        b: "Maybe?",
+        c: "Depends on my mood.",
+        d: "False"
+    },
+    correctAnswer: "d"
+},
+{
+    question: "How do you declare a variable in JavaScript?",
+    answers: {
+        a: "coffeeFlavor = 'Hazelnut'",
+        b: "coffeeFlavor == 'Hazelnut'",
+        c: "var coffeeFlavor = 'Hazelnut'",
+        d: "v coffeeFlavor = 'Hazelnut'"
+    },
+    correctAnswer: "c"
+},
+{
+    question: "Is JavaScript case sensitive?",
+    answers: {
+        a: "Yes",
+        b: "Sometimes",
+        c: "No",
+        d: "I don't know, maybe I should ask them."
+    },
+    correctAnswer: "a"
 }
 ]
 
