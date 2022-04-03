@@ -31,27 +31,75 @@ function startQuiz() {
     quizContainer.textContent = "";
     var question = document.createElement("h1");
     var answerList = document.createElement("ol");
-    var answer1 = document.createElement("li");
-    var answer2 = document.createElement("li");
-    var answer3 = document.createElement("li");
-    var answer4 = document.createElement("li");
+    var answerA = document.createElement("button");
+    var answerB = document.createElement("button");
+    var answerC = document.createElement("button");
+    var answerD = document.createElement("button");
 
     question.textContent = quizQuestions[0].question;
-    answer1.innerHTML = "<btn id='a' class='btn btn-primary m-3'>" + quizQuestions[0].answers["a"] + "</btn>";
-    answer2.innerHTML = "<btn id='b' class='btn btn-primary m-3'>" + quizQuestions[0].answers["b"] + "</btn>";
-    answer3.innerHTML = "<btn id='c' class='btn btn-primary m-3'>" + quizQuestions[0].answers["c"] + "</btn>";
-    answer4.innerHTML = "<btn id='d' class='btn btn-primary m-3'>" + quizQuestions[0].answers["d"] + "</btn>";
+    answerA.textContent = quizQuestions[0].answers["a"];
+    answerB.textContent = quizQuestions[0].answers["b"];
+    answerC.textContent = quizQuestions[0].answers["c"];
+    answerD.textContent = quizQuestions[0].answers["d"];
 
-    answerList.appendChild(answer1);
-    answerList.appendChild(answer2);
-    answerList.appendChild(answer3);
-    answerList.appendChild(answer4);
+    $(answerA).addClass("btn btn-primary m-3");
+    $(answerB).addClass("btn btn-primary m-3");
+    $(answerC).addClass("btn btn-primary m-3");
+    $(answerD).addClass("btn btn-primary m-3");
+
+    $(answerA).attr("id", "a");
+    $(answerB).attr("id", "b");
+    $(answerC).attr("id", "c");
+    $(answerD).attr("id", "d");
+
+    answerList.appendChild(answerA);
+    answerList.appendChild(answerB);
+    answerList.appendChild(answerC);
+    answerList.appendChild(answerD);
 
     quizContainer.appendChild(question);
     quizContainer.appendChild(answerList);
 
-    $("answer1").on("click", console.log(this.id));
-    
+    $("#a").on("click", function() {
+        console.log(this.id);
+        if(this.id === quizQuestions[0].correctAnswer) {
+            console.log("You are right!");
+        }
+
+        else {
+            console.log("You are wrong!");
+        }
+    });
+    $("#b").on("click", function() {
+        console.log(this.id);
+        if(this.id === quizQuestions[0].correctAnswer) {
+            console.log("You are right!");
+        }
+
+        else {
+            console.log("You are wrong!");
+        }
+    });
+    $("#c").on("click", function() {
+        console.log(this.id);
+        if(this.id === quizQuestions[0].correctAnswer) {
+            console.log("You are right!");
+        }
+
+        else {
+            console.log("You are wrong!");
+        }
+    });
+    $("#d").on("click", function() {
+        console.log(this.id);
+        if(this.id === quizQuestions[0].correctAnswer) {
+            console.log("You are right!");
+        }
+
+        else {
+            console.log("You are wrong!");
+        }
+    });
 }
 
 // Timer function for the quiz
