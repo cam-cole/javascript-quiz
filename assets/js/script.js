@@ -1,5 +1,6 @@
 var timerEl = document.getElementById('timer');
 var quizContainer = document.getElementById('quiz-container')
+var resultContainer = document.getElementById('result-container')
 
 // Quiz Questions
 var quizQuestions = [
@@ -26,31 +27,32 @@ var quizQuestions = [
 ]
 
 // function to build quiz
-function buildQuiz() {
-    // variable to store HTML output
-    var output = [];
+function startQuiz() {
+    quizContainer.textContent = "";
+    var question = document.createElement("h1");
+    var answerList = document.createElement("ol");
+    var answer1 = document.createElement("li");
+    var answer2 = document.createElement("li");
+    var answer3 = document.createElement("li");
+    var answer4 = document.createElement("li");
+
+    question.textContent = quizQuestions[0].question;
+    answer1.innerHTML = "<btn id='a' class='btn btn-primary m-3'>" + quizQuestions[0].answers["a"] + "</btn>";
+    answer2.innerHTML = "<btn id='b' class='btn btn-primary m-3'>" + quizQuestions[0].answers["b"] + "</btn>";
+    answer3.innerHTML = "<btn id='c' class='btn btn-primary m-3'>" + quizQuestions[0].answers["c"] + "</btn>";
+    answer4.innerHTML = "<btn id='d' class='btn btn-primary m-3'>" + quizQuestions[0].answers["d"] + "</btn>";
+
+    answerList.appendChild(answer1);
+    answerList.appendChild(answer2);
+    answerList.appendChild(answer3);
+    answerList.appendChild(answer4);
+
+    quizContainer.appendChild(question);
+    quizContainer.appendChild(answerList);
+
+    $("answer1").on("click", console.log(this.id));
     
-    // for each question
-    quizQuestions.forEach((currentQuestion, questionNumber) => {
-        // variable to store the list of possible answers
-        var answers = []
-
-        for(letter in currentQuestion.answers){
-            answers.push(
-                `<button class="btn btn-primary m-3">${letter}: ${currentQuestion.answers[letter]}</button>`
-            );
-        }
-
-        // add this question and its answers to the output
-        output.push(
-            `<div>${currentQuestion.question}</div>
-            <div>${answers.join('')}</div>`
-        );
-    })
-
-    quizContainer.innerHTML = output.join('');
 }
-
 
 // Timer function for the quiz
 function countdown() {
@@ -69,4 +71,4 @@ function countdown() {
 }
 
 $("#start").on("click", countdown);
-$("#start").on("click", buildQuiz);
+$("#start").on("click", startQuiz);
