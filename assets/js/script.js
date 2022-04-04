@@ -8,7 +8,7 @@ var answerIncorrect = document.createElement("h2");
 let currentQuestion = 0;
 
 answerCorrect.textContent = "Correct!";
-answerIncorrect.textContent = "Incorrect. You lost 10 seconds";
+answerIncorrect.textContent = "Wrong!";
 
 $(answerCorrect).addClass("m-3");
 $(answerIncorrect).addClass("m-3");
