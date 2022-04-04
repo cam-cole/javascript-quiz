@@ -10,8 +10,8 @@ let currentQuestion = 0;
 answerCorrect.textContent = "Correct!";
 answerIncorrect.textContent = "Wrong!";
 
-$(answerCorrect).addClass("m-3");
-$(answerIncorrect).addClass("m-3");
+$(answerCorrect).addClass("m-3 text-center text-secondary");
+$(answerIncorrect).addClass("m-3 text-center text-secondary");
 
 // Quiz Questions
 var quizQuestions = [
