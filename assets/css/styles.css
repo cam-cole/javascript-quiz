@@ -1,3 +1,4 @@
-#result-container {
-    text-align: center;
+section {
+    width: 50%;
+    margin: auto;
 }

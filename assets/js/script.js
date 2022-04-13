@@ -124,7 +124,8 @@ function showQuestion(questionNumber) {
     if (quizQuestions.length - questionNumber === 0) {
         endQuiz();
     }
-    else if (timeLeft <= 0) {
+
+    else if (timeLeft <=0) {
         timeLeft = 0;
         endQuiz();
     }
@@ -263,9 +264,11 @@ function endQuiz() {
     resultContainer.textContent = "";
     
     // display score and submit/go back buttons
-    console.log("High Score!");
     var score = timeLeft;
-    console.log("Your score is: " + score);
+
+    // stop timer
+    timeLeft = 0;
+
     var scoreDisplay = document.createElement("h1");
     var enterInitials = document.createElement("h2");
     var userInitials = document.createElement("input");
@@ -315,26 +318,42 @@ function highScore() {
     quizContainer.textContent = "";
     resultContainer.textContent = "";
 
-    // create high score title
-    var highScoreHeader = document.createElement("h1");
-    highScoreHeader.textContent = "High Scores:";
-    quizContainer.appendChild(highScoreHeader);
-
     // create high score list
     var highScoreList = document.createElement("ol");
 
-    for (i=0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        var value = localStorage.getItem(key);
+    if (localStorage.length > 0) {
+        // create high score title
+        var highScoreHeader = document.createElement("h1");
+        highScoreHeader.textContent = "High Scores:";
+        quizContainer.appendChild(highScoreHeader);
 
-        var highScoreItem = document.createElement("li");
-        highScoreItem.textContent = key + ': ' + value;
-        highScoreList.appendChild(highScoreItem);
+        for (i=0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
 
-        console.log(key + ': ' + value);
+            var highScoreItem = document.createElement("li");
+            highScoreItem.textContent = key + ': ' + value;
+            highScoreList.appendChild(highScoreItem);
+        }
+        resultContainer.appendChild(highScoreList);
+    }
+    else {
+        // notify about no high scores
+        var noHighScoreAlert = document.createElement("h3");
+        noHighScoreAlert.textContent = "There aren't any high scores yet! Take the quiz to set a new record!";
+        quizContainer.appendChild(noHighScoreAlert);
     }
 
-    resultContainer.appendChild(highScoreList);
+    var goBackButton = document.createElement("button");
+    $(goBackButton).addClass("btn btn-primary m-3");
+    $(goBackButton).attr("id", "go-back");
+    goBackButton.textContent = "Go Back";
+    resultContainer.appendChild(goBackButton);
+    goBackButton.setAttribute("style", "margin:auto; width:50%; text-align:center");
+
+    $('#go-back').on("click", function(){
+        location.reload();
+    })
 }
 
 // Timer function for the quiz
