@@ -315,9 +315,26 @@ function highScore() {
     quizContainer.textContent = "";
     resultContainer.textContent = "";
 
+    // create high score title
     var highScoreHeader = document.createElement("h1");
     highScoreHeader.textContent = "High Scores:";
     quizContainer.appendChild(highScoreHeader);
+
+    // create high score list
+    var highScoreList = document.createElement("ol");
+
+    for (i=0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var value = localStorage.getItem(key);
+
+        var highScoreItem = document.createElement("li");
+        highScoreItem.textContent = key + ': ' + value;
+        highScoreList.appendChild(highScoreItem);
+
+        console.log(key + ': ' + value);
+    }
+
+    resultContainer.appendChild(highScoreList);
 }
 
 // Timer function for the quiz
