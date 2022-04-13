@@ -145,10 +145,10 @@ function showQuestion(questionNumber) {
         answerC.textContent = quizQuestions[questionNumber].answers["c"];
         answerD.textContent = quizQuestions[questionNumber].answers["d"];
 
-        $(answerA).addClass("btn btn-primary m-3");
-        $(answerB).addClass("btn btn-primary m-3");
-        $(answerC).addClass("btn btn-primary m-3");
-        $(answerD).addClass("btn btn-primary m-3");
+        $(answerA).addClass("btn btn-primary col-12 col-lg-12 mt-3 d-flex justify-content-center");
+        $(answerB).addClass("btn btn-primary col-12 col-lg-12 mt-3 d-flex justify-content-center");
+        $(answerC).addClass("btn btn-primary col-12 col-lg-12 mt-3 d-flex justify-content-center");
+        $(answerD).addClass("btn btn-primary col-12 col-lg-12 mt-3 d-flex justify-content-center");
 
         $(answerA).attr("id", "a");
         $(answerB).attr("id", "b");
@@ -162,7 +162,7 @@ function showQuestion(questionNumber) {
         quizContainer.appendChild(question);
         quizContainer.appendChild(answerList);
 
-        question.setAttribute("style", "margin:auto; width:100%; text-align:center;");
+        question.setAttribute("style", "margin:auto; width:95%; text-align:center;");
         answerA.setAttribute("style", "margin:auto; width:100%; text-align:center;");
         answerB.setAttribute("style", "margin:auto; width:100%; text-align:center;");
         answerC.setAttribute("style", "margin:auto; width:100%; text-align:center;");
@@ -347,7 +347,7 @@ function highScore() {
     }
 
     var goBackButton = document.createElement("button");
-    $(goBackButton).addClass("btn btn-primary m-3");
+    $(goBackButton).addClass("btn btn-primary mt-2");
     $(goBackButton).attr("id", "go-back");
     goBackButton.textContent = "Go Back";
     resultContainer.appendChild(goBackButton);
