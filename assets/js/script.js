@@ -320,6 +320,7 @@ function highScore() {
 
     // create high score list
     var highScoreList = document.createElement("ol");
+    $(highScoreList).addClass("list-group")
 
     if (localStorage.length > 0) {
         // create high score title
@@ -333,6 +334,7 @@ function highScore() {
 
             var highScoreItem = document.createElement("li");
             highScoreItem.textContent = key + ': ' + value;
+            $(highScoreItem).addClass("list-group-item");
             highScoreList.appendChild(highScoreItem);
         }
         resultContainer.appendChild(highScoreList);
@@ -349,7 +351,7 @@ function highScore() {
     $(goBackButton).attr("id", "go-back");
     goBackButton.textContent = "Go Back";
     resultContainer.appendChild(goBackButton);
-    goBackButton.setAttribute("style", "margin:auto; width:50%; text-align:center");
+    goBackButton.setAttribute("style", "width:100%; text-align:center");
 
     $('#go-back').on("click", function(){
         location.reload();
