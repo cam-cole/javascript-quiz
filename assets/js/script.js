@@ -124,6 +124,10 @@ function showQuestion(questionNumber) {
     if (quizQuestions.length - questionNumber === 0) {
         endQuiz();
     }
+    else if (timeLeft <= 0) {
+        timeLeft = 0;
+        endQuiz();
+    }
 
     else {
         quizContainer.textContent = "";
